@@ -1,6 +1,8 @@
 ﻿using LiteLoader.NET;
 
 using Core.Logger;
+using Core.Module;
+using System.Reflection.Metadata.Ecma335;
 
 [assembly: LibPath("plugins\\CorePlugin\\libs")]
 
@@ -30,14 +32,13 @@ namespace Core
         // Реализация свойства интерфейса IPluginInitializer для хранения версии
         Version IPluginInitializer.Version => new();
 
-        private CorePlugin instance;
+        private static CorePlugin instance;
 
         private CoreLogger logger;
 
-        public CorePlugin GetInstance()
-        {
-            return instance;
-        }
+        private ModuleManager moduleManager;
+
+        public static CorePlugin GetInstance() => instance;
 
         public void OnInitialize() 
         {
@@ -50,11 +51,13 @@ namespace Core
 
             logger = new CoreLogger();
             logger.Execute("Плагин Core был загружен...");
+
+            moduleManager = new ModuleManager();
+            moduleManager.InitModules();
         }
 
-        public CoreLogger GetLogger()
-        {
-            return logger;
-        }
+        public CoreLogger GetLogger() => logger;
+
+        public ModuleManager GetModuleManager() => moduleManager;
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Core.Module.Database;
 
-namespace Core.module
+namespace Core.Module
 {
     public class ModuleManager
     {
@@ -14,14 +14,7 @@ namespace Core.module
 
         public object? GetModule(String name)
         {
-            foreach (object value in poolModules.Values)
-            {
-                if (((IModule) value).GetName() == name)
-                {
-                    return value;
-                }
-            }
-            return null;
+            return poolModules.Values.FirstOrDefault(value => name == ((IModule)value).GetName());
         }
     }
 }

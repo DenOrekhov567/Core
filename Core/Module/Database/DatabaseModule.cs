@@ -1,6 +1,7 @@
 ﻿using Core.Module;
+using Core;
 
-namespace Core.module.Database
+namespace Core.Module.Database
 {
     public class DatabaseModule : IModule
     {
@@ -8,7 +9,9 @@ namespace Core.module.Database
         public string GetName() => "Database";
 
         // Реализация метода Init, который включает модуль
-        public void Init() { }
+        public void Init() {
+            CorePlugin.GetInstance().GetLogger().Execute("Модуль " + GetName() + " включен");
+        }
 
         // Реализация метода DeInit, который выключает модуль
         public void DeInit() { }
