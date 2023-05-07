@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "Core/1.0.0": {
+        "dependencies": {
+          "LiteLoader.NET": "2.10.0.22206"
+        },
+        "runtime": {
+          "Core.dll": {}
+        }
+      },
+      "LiteLoader.NET/2.10.0.22206": {
+        "runtime": {
+          "LiteLoader.NET.dll": {
+            "assemblyVersion": "2.10.0.22206",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "LiteLoader.NET/2.10.0.22206": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
