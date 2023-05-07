@@ -1,9 +1,14 @@
-﻿namespace Core.Module
+﻿namespace Core.Module 
 {
-    public interface IModule
+    public interface IModule 
     {
+        // Метод инициализации модуля
         void Init();
+
+        // Метод деинициализации модуля
         void DeInit();
-        string GetName();
+
+        // Метод получения имени модуля
+        string GetName(); 
     }
 }

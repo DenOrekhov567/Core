@@ -6,22 +6,28 @@ using Core.Logger;
 
 namespace Core
 {
-    [PluginMain(name: "CorePlugin")]
+    // Атрибут, который помечает класс как точку входа плагина, задающий имя плагина
+    [PluginMain(name: "CorePlugin")] 
 
-    public class CorePlugin : IPluginInitializer
+    public class CorePlugin : IPluginInitializer 
     {
-        public Dictionary<string, string> MetaData => new()
+        // Свойство класса, которое хранит метаданные плагина
+        public Dictionary<string, string> MetaData => new() 
         {
-            {"Something", "..."},
+            {"Something", "..."}, // метаданные плагина
             {"foo", "bar"}
         };
 
+        // Свойство класса, которое хранит версию плагина
         public Version Version => new(2, 2, 5);
 
+        // Свойство класса, которое хранит вступительную информацию о плагине
         public string Introduction => "Core plugin for Liteloader.NET";
 
+        // Реализация свойства интерфейса IPluginInitializer для хранения метаданных
         Dictionary<string, string> IPluginInitializer.MetaData => new();
 
+        // Реализация свойства интерфейса IPluginInitializer для хранения версии
         Version IPluginInitializer.Version => new();
 
         private CorePlugin instance;
@@ -33,9 +39,9 @@ namespace Core
             return instance;
         }
 
-        public void OnInitialize()
+        public void OnInitialize() 
         {
-            InitComponents();
+            InitComponents(); // инициализация компонентов плагина
         }
 
         private void InitComponents()
@@ -44,6 +50,11 @@ namespace Core
 
             logger = new CoreLogger();
             logger.Execute("Плагин Core был загружен...");
+        }
+
+        public CoreLogger GetLogger()
+        {
+            return logger;
         }
     }
 }
