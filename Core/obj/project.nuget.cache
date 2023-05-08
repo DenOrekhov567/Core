@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "r24rO1Q6ypXAinnQgQsEn2wW5U0aD9g8I72TlRGj9I/Eha2JejkCZeC1r9BDZDCC3Jdrq+P6Zizl4AIeiHgPRw==",
+  "dgSpecHash": "LF5GSnnZfgFDu0579oP1x3XwLy7YGnJ/+rh6yEMJejk0F/8TgPOmEhKqBbmdg6ySZ/x+IacpqwmXUWRZvR5rQA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\denis\\Desktop\\BDS with .NET\\projects\\Core\\Core\\Core.csproj",
+  "projectFilePath": "C:\\Users\\denis\\Desktop\\BDS\\projects\\Core\\Core\\Core.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
