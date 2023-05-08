@@ -19,7 +19,7 @@ namespace Core.Module.Teleport
 
         public void InitCommands()
         {
-            (new TeleportCommand()).Execute();
+            TeleportCommandManager.InitCommands();
         }
 
         // Реализация метода DeInit, который выключает модуль
