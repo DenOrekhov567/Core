@@ -7,7 +7,7 @@ namespace Core.Module.Teleport.Command
         public static void InitCommands()
         {
             TeleportCommand teleportCommand = new TeleportCommand();
-            teleportCommand.Execute();
+            teleportCommand.Init();
         }
     }
 }

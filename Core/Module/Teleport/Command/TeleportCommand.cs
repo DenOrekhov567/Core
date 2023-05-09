@@ -1,7 +1,6 @@
 ﻿using LiteLoader.DynamicCommand;
 using MC;
-
-using Core;
+using static LiteLoader.DynamicCommand.DynamicCommand;
 
 namespace Core.Module.Teleport.Command;
 
@@ -9,19 +8,24 @@ public class TeleportCommand
 {
     private static readonly LiteLoader.Logger.Logger logger = new("TeleportCommand");
 
-    public void Execute()
+    public void Init()
     {
-        DynamicCommandInstance instance = DynamicCommand.CreateCommand("dytest", ".NET test command", CommandPermissionLevel.Any);
+        DynamicCommandInstance instance = DynamicCommand.CreateCommand("tpa", "Телепортироваться к игроку", CommandPermissionLevel.Any);
         instance.SetAlias("aliafortest");
         instance.AddOverload(new List<string>());
-
         instance.SetCallback((cmd, origin, output, results) =>
         {
-            Level.BroadcastText("hihi!", TextType.RAW);
-            output.Success("successful");
+            Execute(cmd, origin, output, results);
         });
         DynamicCommand.Setup(instance);
 
         CorePlugin.GetInstance().GetLogger().Execute("Команда TeleportCommand включена");
     }
+
+    public void Execute(DynamicCommand cmd, CommandOrigin origin, CommandOutput output, Dictionary<string, Result> results)
+    {
+        Level.BroadcastText("hihi!", TextType.RAW);
+        output.Success("successful");
+    }
+
 }
