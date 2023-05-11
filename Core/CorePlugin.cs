@@ -2,19 +2,18 @@
 
 using Core.Logger;
 using Core.Module;
-using System.Reflection.Metadata.Ecma335;
 
 [assembly: LibPath("plugins\\CorePlugin\\libs")]
 
 namespace Core
 {
     // Атрибут, который помечает класс как точку входа плагина, задающий имя плагина
-    [PluginMain(name: "CorePlugin")] 
+    [PluginMain(name: "CorePlugin")]
 
-    public class CorePlugin : IPluginInitializer 
+    public class CorePlugin : IPluginInitializer
     {
         // Свойство класса, которое хранит метаданные плагина
-        public Dictionary<string, string> MetaData => new() 
+        public Dictionary<string, string> MetaData => new()
         {
             {"Something", "..."}, // метаданные плагина
             {"foo", "bar"}
@@ -32,32 +31,28 @@ namespace Core
         // Реализация свойства интерфейса IPluginInitializer для хранения версии
         Version IPluginInitializer.Version => new();
 
-        private static CorePlugin instance;
+        public static CorePlugin Instance;
 
-        private CoreLogger logger;
+        private CoreLogger Logger;
+        private ModuleManager Module;
 
-        private ModuleManager moduleManager;
+        public static CorePlugin GetInstance() => Instance;
+        public CoreLogger GetLogger() => Logger;
+        public ModuleManager getModuleManager() => Module;
 
-        public static CorePlugin GetInstance() => instance;
-
-        public void OnInitialize() 
+        public void OnInitialize()
         {
-            InitComponents(); // инициализация компонентов плагина
+            InitComponents();
         }
 
         private void InitComponents()
         {
-            instance = this;
+            Instance = this;
 
-            logger = new CoreLogger();
-            logger.Execute("Плагин Core был загружен...");
+            Logger = new CoreLogger();
+            Module = new ModuleManager();
 
-            moduleManager = new ModuleManager();
-            moduleManager.InitModules();
+            Logger.Execute("Плагин Core загружен");
         }
-
-        public CoreLogger GetLogger() => logger;
-
-        public ModuleManager GetModuleManager() => moduleManager;
     }
 }

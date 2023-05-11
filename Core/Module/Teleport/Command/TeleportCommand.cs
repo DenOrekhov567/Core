@@ -10,22 +10,22 @@ public class TeleportCommand
 
     public void Init()
     {
-        DynamicCommandInstance instance = DynamicCommand.CreateCommand("tpa", "Телепортироваться к игроку", CommandPermissionLevel.Any);
-        instance.SetAlias("aliafortest");
-        instance.AddOverload(new List<string>());
-        instance.SetCallback((cmd, origin, output, results) =>
+        DynamicCommandInstance Instance = DynamicCommand.CreateCommand("tpgo", "Телепортироваться к игроку", CommandPermissionLevel.Any);
+        //Instance.SetAlias("");
+        Instance.AddOverload(new List<string>());
+        Instance.SetCallback((Cmd, Origin, Output, Results) =>
         {
-            Execute(cmd, origin, output, results);
+            Execute(Cmd, Origin, Output, Results);
         });
-        DynamicCommand.Setup(instance);
+        DynamicCommand.Setup(Instance);
 
         CorePlugin.GetInstance().GetLogger().Execute("Команда TeleportCommand включена");
     }
 
-    public void Execute(DynamicCommand cmd, CommandOrigin origin, CommandOutput output, Dictionary<string, Result> results)
+    public void Execute(DynamicCommand Cmd, CommandOrigin Origin, CommandOutput Output, Dictionary<string, Result> Results)
     {
         Level.BroadcastText("hihi!", TextType.RAW);
-        output.Success("successful");
+        Output.Success("successful");
     }
 
 }

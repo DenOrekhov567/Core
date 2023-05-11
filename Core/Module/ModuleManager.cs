@@ -5,20 +5,18 @@ namespace Core.Module
 {
     public class ModuleManager
     {
+        readonly Dictionary<string, object> PoolModules = new() { };
 
-        Dictionary<string, object> poolModules = new() { };
-
-        public void InitModules()
+        public ModuleManager()
         {
-            DatabaseModule databaseModule = new DatabaseModule();
-            poolModules.Add("Database", new DatabaseModule());
-            databaseModule.Init();
-
-            TeleportModule teleportModule = new TeleportModule();
-            poolModules.Add("Teleport", new TeleportModule());
-            teleportModule.Init();
+            Init();
+        }
+        public void Init()
+        {
+            PoolModules.Add("Database", new DatabaseModule());
+            PoolModules.Add("Teleport", new TeleportModule());
         }
 
-        public object? GetModule(String name) => poolModules.Values.FirstOrDefault(value => name == ((IModule)value).GetName());
+        public object? GetModule(String name) => PoolModules.Values.FirstOrDefault(value => name == ((IModule)value).GetName());
     }
 }

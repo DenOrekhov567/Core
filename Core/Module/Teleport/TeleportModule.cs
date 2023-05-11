@@ -6,10 +6,12 @@ namespace Core.Module.Teleport
 {
     public class TeleportModule : IModule
     {
-        // Реализация метода GetName, возвращающего строку с именем модуля
+        public TeleportModule()
+        {
+            Init();
+        }
         public string GetName() => "Teleport";
 
-        // Реализация метода Init, который включает модуль
         public void Init()
         {
             CorePlugin.GetInstance().GetLogger().Execute("Модуль " + GetName() + " включен");
@@ -19,7 +21,8 @@ namespace Core.Module.Teleport
 
         public void InitCommands()
         {
-            TeleportCommandManager.InitCommands();
+            TeleportCommand Teleport = new TeleportCommand();
+            Teleport.Init();
         }
 
         // Реализация метода DeInit, который выключает модуль
